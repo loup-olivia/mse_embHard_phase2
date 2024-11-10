@@ -6,3 +6,47 @@
  This short tutorial will show you how to setup the complete system to get it ready to run.
  ## Topic and labo
  8. labo 4 : Complete system setup NOK
+
+### Topic 8, labo 04
+#### 4.1
+Button doing system reset :\
+- Pin of system reset : PIN E10
+Connection :
+#### 4.2
+Selection of 5 modes : The mode depend of dipswitch [3..1]\
+```current_mode = DIPSW_get_value();```\
+```mode = current_mode&(DIPSW_SW1_MASK|DIPSW_SW3_MASK|DIPSW_SW2_MASK);```
+
+The modes are [4..0]:
+- 0 : /SW1 & /SW2 & /SW3
+- 1 : SW1 & /SW2 & /SW3 (simplest mode)
+- 2 : /SW1 & SW2 & /SW3 
+- 3 : SW1 & SW2 & /SW3
+- Default : other 
+
+Selection of VGA : If dispwitch 8 is high\
+```current_mode&DIPSW_SW8_MASK```
+#### 4.3
+In one mode, the systeme use :
+- ```lcd_simple.c```
+  - ```transfer_LCD_with_dma```
+- ```dipswitch.c```
+    - ```DIPSW_get_value()``` = 0xa84
+- ```camera.c```
+    - ```cam_get_xsize()``` 
+    - ```cam_get_ysize()``` 
+    - ```current_image_pointer``` : image = 0x1350e0
+- ```vga.c```
+  - ```vga_set_swap```
+  - ```vga_set_pointer```
+- ```grayscale.c```
+    - ```get_grayscale()```
+- ```dipswitch.h```
+  - ```DIPSW_SW1_MASK```
+  - ```DIPSW_SW2_MASK```
+  - ```DIPSW_SW3_MASK```
+  - ```DIPSW_SW8_MASK```
+- ```vga.h```
+  - - ```VGA_Grayscale```
+
+When VGA in involed, 
