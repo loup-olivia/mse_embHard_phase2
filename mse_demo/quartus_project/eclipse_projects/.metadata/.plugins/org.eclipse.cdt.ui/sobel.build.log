@@ -1,9 +1,9 @@
-16:02:37 **** Incremental Build of configuration Nios II for project sobel ****
+21:31:04 **** Incremental Build of configuration Nios II for project sobel ****
 make all 
 Info: Building C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 [BSP build complete]
 [sobel build complete]
 
-16:02:38 Build Finished (took 836ms)
+21:31:05 Build Finished (took 1s.220ms)
 
