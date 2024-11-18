@@ -9,6 +9,9 @@
 #include "vga.h"
 #include "dipswitch.h"
 #include "sobel.h"
+#include "sys/alt timestamp.h"
+#include "alt types.h"
+
 
 int main()
 {

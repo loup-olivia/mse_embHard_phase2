@@ -65,7 +65,7 @@ short sobel_mac( unsigned char *pixels,
 
 void sobel_x( unsigned char *source ) {
    int x,y;
-
+   //unrolling loop
    for (y = 1 ; y < (sobel_height-1) ; y++) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
          sobel_x_result[y*sobel_width+x] = sobel_mac(source,x,y,gx_array,sobel_width);
@@ -92,14 +92,14 @@ void sobel_x_with_rgb( unsigned char *source ) {
 
 void sobel_y( unsigned char *source ) {
    int x,y;
-
+   //unrolling loop
    for (y = 1 ; y < (sobel_height-1) ; y++) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
          sobel_y_result[y*sobel_width+x] = sobel_mac(source,x,y,gy_array,sobel_width);
       }
    }
 }
-
+//change here,
 void sobel_y_with_rgb( unsigned char *source ) {
    int x,y;
    short result;
@@ -120,6 +120,7 @@ void sobel_y_with_rgb( unsigned char *source ) {
 void sobel_threshold(short threshold) {
 	int x,y,arrayindex;
 	short sum,value;
+   //unrolling loop
 	for (y = 1 ; y < (sobel_height-1) ; y++) {
 		for (x = 1 ; x < (sobel_width-1) ; x++) {
 			arrayindex = (y*sobel_width)+x;
