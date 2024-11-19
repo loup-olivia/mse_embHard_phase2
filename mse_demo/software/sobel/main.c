@@ -9,10 +9,10 @@
 #include "vga.h"
 #include "dipswitch.h"
 #include "sobel.h"
-#include "sys/alt timestamp.h"
-#include "alt types.h"
+#include "alt_timestamp.h"
+#include "alt_types.h"
 
-
+// check makefile tohave -O1,-O2,-O3
 int main()
 {
   void *buffer1,*buffer2,*buffer3,*buffer4;
@@ -20,6 +20,19 @@ int main()
   unsigned char *grayscale;
   unsigned char current_mode;
   unsigned char mode;
+  // vairable to save time
+  alt_u32 start_sobel_x_m2 ;
+  alt_u32 end_sobel_x_m2;
+  alt_u32 start_sobel_x;
+  alt_u32 end_sobel_x;
+  alt_u32 start_sobel_y;
+  alt_u32 end_sobel_y;
+  alt_u32 start_sobel_threshold;
+  alt_u32 end_sobel_threshold;
+  alt_u32 start_sobel_conv_graycale;
+  alt_u32 end_sobel_conv_graycale;
+  //init time
+  alt_timestamp_start();
   init_LCD();
   init_camera();
   vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
@@ -50,9 +63,12 @@ int main()
 		      	  		  vga_set_pointer(image);
 		      	  	   }
 		      	  	   break;
-		      case 1 : conv_grayscale((void *)image,
+		      case 1 : 
+			  			start_sobel_conv_graycale =  alt_timestamp();
+						conv_grayscale((void *)image,
 		    		                  cam_get_xsize()>>1,
 		    		                  cam_get_ysize());
+						end_sobel_conv_graycale = alt_timestamp();
 		               grayscale = get_grayscale_picture();
 		               transfer_LCD_with_dma(&grayscale[16520],
 		      		                	cam_get_xsize()>>1,
@@ -62,11 +78,16 @@ int main()
 		      	  		  vga_set_pointer(grayscale);
 		      	  	   }
 		      	  	   break;
-		      case 2 : conv_grayscale((void *)image,
+		      case 2 : 
+			  			start_sobel_conv_graycale =  alt_timestamp();
+						conv_grayscale((void *)image,
 		    		                  cam_get_xsize()>>1,
 		    		                  cam_get_ysize());
+						end_sobel_conv_graycale = alt_timestamp();
 		               grayscale = get_grayscale_picture();
+					   //start_sobel_x_m2 =  alt_timestamp();
 		               sobel_x_with_rgb(grayscale);
+					   //end_sobel_x_m2 = alt_timestamp();
 		               image = GetSobel_rgb();
 		               transfer_LCD_with_dma(&image[16520],
 		      		                	cam_get_xsize()>>1,
@@ -76,39 +97,59 @@ int main()
 		      	  		  vga_set_pointer(image);
 		      	  	   }
 		      	  	   break;
-		      case 3 : conv_grayscale((void *)image,
+		      case 3 : 
+			  			
+						start_sobel_conv_graycale =  alt_timestamp();
+						conv_grayscale((void *)image,
 		    		                  cam_get_xsize()>>1,
 		    		                  cam_get_ysize());
-		               grayscale = get_grayscale_picture();
-		               sobel_x(grayscale);
-		               sobel_y_with_rgb(grayscale);
-		               image = GetSobel_rgb();
-		               transfer_LCD_with_dma(&image[16520],
+						end_sobel_conv_graycale = alt_timestamp();
+		               	grayscale = get_grayscale_picture();
+					   	start_sobel_x_m2 =  alt_timestamp();
+		               	sobel_x(grayscale);
+						end_sobel_x_m2 = alt_timestamp();
+		               	sobel_y_with_rgb(grayscale);
+		               	image = GetSobel_rgb();
+		               	transfer_LCD_with_dma(&image[16520],
 		      		                	cam_get_xsize()>>1,
 		      		                	cam_get_ysize(),0);
-		      	  	   if ((current_mode&DIPSW_SW8_MASK)!=0) {
-		      	  		  vga_set_swap(VGA_QuarterScreen);
-		      	  		  vga_set_pointer(image);
-		      	  	   }
-		      	  	   break;
-		      default: conv_grayscale((void *)image,
+		      	  	   	if ((current_mode&DIPSW_SW8_MASK)!=0) {
+		      	  			  vga_set_swap(VGA_QuarterScreen);
+		      	  			  vga_set_pointer(image);
+		      	  	   	}
+		      	  	   	break;
+		      default: 
+			  			start_sobel_conv_graycale =  alt_timestamp();
+						conv_grayscale((void *)image,
 	                                  cam_get_xsize()>>1,
 	                                  cam_get_ysize());
-                       grayscale = get_grayscale_picture();
-                       sobel_x(grayscale);
-                       sobel_y(grayscale);
-                       sobel_threshold(128);
-                       grayscale=GetSobelResult();
-		               transfer_LCD_with_dma(&grayscale[16520],
-		      		                	cam_get_xsize()>>1,
-		      		                	cam_get_ysize(),1);
-		      	  	   if ((current_mode&DIPSW_SW8_MASK)!=0) {
-		      	  		  vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
-		      	  		  vga_set_pointer(grayscale);
-		      	  	   }
-		      	  	   break;
+						end_sobel_conv_graycale = alt_timestamp();
+                       	grayscale = get_grayscale_picture();
+					   	start_sobel_x =  alt_timestamp();
+                       	sobel_x(grayscale);
+						end_sobel_x = alt_timestamp();
+                       	start_sobel_y =  alt_timestamp();
+						sobel_y(grayscale);
+                       	end_sobel_y = alt_timestamp();
+                       	start_sobel_threshold =  alt_timestamp();
+						sobel_threshold(128);
+		               	end_sobel_threshold = alt_timestamp();
+						grayscale=GetSobelResult();
+						transfer_LCD_with_dma(&grayscale[16520],
+		      		   	             	cam_get_xsize()>>1,
+		      		   	             	cam_get_ysize(),1);
+		      	  	   	if ((current_mode&DIPSW_SW8_MASK)!=0) {
+							vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
+							vga_set_pointer(grayscale);
+		      	  	   	}
+		      	  	   	break;
 		      }
 		  }
+		  print(" sobel x m2 %f\n",start_sobel_x_m2-end_sobel_x_m2);
+		  print(" sobel x def %f\n",start_sobel_x-end_sobel_x);
+		  print(" sobel y %f\n",start_sobel_y-end_sobel_y);
+		  print(" sobel threshold %f\n",start_sobel_threshold-end_sobel_threshold);
+		  print(" sobel conv grayscale in mode %d : %f\n",mode,start_sobel_conv_graycale-end_sobel_conv_graycale);
 	  }
   } while (1);
   return 0;
