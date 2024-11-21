@@ -55,16 +55,42 @@ short sobel_mac( unsigned char *pixels,
    short dy,dx;
    short result = 0;
    //unrolling inner loop
-   for (dy = -1 ; dy < 2 ; dy++) {
-      result += filter[(dy+1)*3+(1)]*
-                  pixels[(y+dy)*width+(x)];
-      result += filter[(dy+1)*3+(dx+1)]*
-                  pixels[(y+dy)*width+(x+1)];
-      result += filter[(dy+1)*3+(dx+1)]*
-                  pixels[(y+dy)*width+(x+2)];
-      result += filter[(dy+1)*3+(dx+1)]*
-                  pixels[(y+dy)*width+(x+3)];
-   }
+   // unrolling all loops
+   result += filter[(1)*3+(1)]*
+         pixels[(y)*width+(x)];
+   result += filter[(1)*3+(dx+1)]*
+         pixels[(y)*width+(x+1)];
+   result += filter[(1)*3+(dx+1)]*
+         pixels[(y)*width+(x+2)];
+   result += filter[(1)*3+(dx+1)]*
+         pixels[(y)*width+(x+3)];
+         
+   result += filter[(1+1)*3+(1)]*
+         pixels[(y+1)*width+(x)];
+   result += filter[(1+1)*3+(dx+1)]*
+         pixels[(y+1)*width+(x+1)];
+   result += filter[(1+1)*3+(dx+1)]*
+         pixels[(y+1)*width+(x+2)];
+   result += filter[(1+1)*3+(dx+1)]*
+         pixels[(y+1)*width+(x+3)];
+
+   result += filter[(2+1)*3+(1)]*
+         pixels[(y+2)*width+(x)];
+   result += filter[(2+1)*3+(dx+1)]*
+         pixels[(y+2)*width+(x+1)];
+   result += filter[(2+1)*3+(dx+1)]*
+         pixels[(y+2)*width+(x+2)];
+   result += filter[(2+1)*3+(dx+1)]*
+         pixels[(y+2)*width+(x+3)];
+
+   result += filter[(3+1)*3+(1)]*
+         pixels[(y+3)*width+(x)];
+   result += filter[(3+1)*3+(dx+1)]*
+         pixels[(y+3)*width+(x+1)];
+   result += filter[(3+1)*3+(dx+1)]*
+         pixels[(y+3)*width+(x+2)];
+   result += filter[(3+1)*3+(dx+1)]*
+         pixels[(y+3)*width+(x+3)];
    return result;
 }
 

@@ -46,3 +46,14 @@ sobel x def 3562710178
 sobel y 3571428698
 sobel threshold 4191564118
 sobel conv grayscale in mode 4 : 4163372769
+### unrolling outerloop
+ sobel x m2 3
+ sobel x def 3537313655
+ sobel y 3540607309
+ sobel threshold 4191431981
+ sobel conv grayscale in mode 4 : 4164009408
+ sobel x m2 3
+ sobel x def 3536651518
+ sobel y 3538946862
+ sobel threshold 4191641150
+ sobel conv grayscale in mode 4 : 4167009569
