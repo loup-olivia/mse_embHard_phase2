@@ -97,6 +97,7 @@ short sobel_mac( unsigned char *pixels,
 
 void sobel_x( unsigned char *source ) {
    int x,y;
+   int idx;
    //unrolling loop
 
    short result = 0;
@@ -106,38 +107,38 @@ void sobel_x( unsigned char *source ) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
             result += *gx_array[0]*
                   source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[0]*
+            result += *gx_array[1]*
                   source[(y)*sobel_width+(x+1)];
-            result += *gx_array[0]*
-            		source[(y)*sobel_width+(x+2)];
-            result += *gx_array[0]*
+            result += *gx_array[2]*
+                  source[(y)*sobel_width+(x+2)];
+            result += *gx_array[3]*
                   source[(y)*sobel_width+(x+3)];
                   
-            result += *gx_array[1]*
+            result += *gx_array[3]*
                   source[(y+1)*sobel_width+(x)];
-            result += *gx_array[1]*
+            result += *gx_array[3+1]*
                   source[(y+1)*sobel_width+(x+1)];
-            result += *gx_array[1]*
+            result += *gx_array[3+2]*
                   source[(y+1)*sobel_width+(x+2)];
-            result += *gx_array[1]*
+            result += *gx_array[3+3]*
                   source[(y+1)*sobel_width+(x+3)];
 
-            result += *gx_array[2]*
+            result += *gx_array[6]*
                   source[(y+2)*sobel_width+(x)];
-            result += *gx_array[2]*
+            result += *gx_array[6+1]*
                   source[(y+2)*sobel_width+(x+1)];
-            result += *gx_array[2]*
+            result += *gx_array[6+2]*
                   source[(y+2)*sobel_width+(x+2)];
-            result += *gx_array[2]*
+            result += *gx_array[6+3]*
                   source[(y+2)*sobel_width+(x+3)];
 
-            result += *gx_array[3]*
+            result += *gx_array[12]*
                   source[(y+3)*sobel_width+(x)];
-            result += *gx_array[3]*
+            result += *gx_array[12+1]*
                   source[(y+3)*sobel_width+(x+1)];
-            result += *gx_array[3]*
+            result += *gx_array[12+2]*
                   source[(y+3)*sobel_width+(x+2)];
-            result += *gx_array[3]*
+            result += *gx_array[12+3]*
                   source[(y+3)*sobel_width+(x+3)];
             sobel_x_result[y*sobel_width+x] = result;//sobel_mac(source,x,y,gx_array,sobel_width);
       }

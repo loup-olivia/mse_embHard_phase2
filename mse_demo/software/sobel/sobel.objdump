@@ -35,49 +35,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 00001038  00000000  00000000  000155c8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   00024eed  00000000  00000000  00016600  2**0
+  9 .debug_info   00024ef8  00000000  00000000  00016600  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00009935  00000000  00000000  0003b4ed  2**0
+ 10 .debug_abbrev 00009942  00000000  00000000  0003b4f8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   0000c442  00000000  00000000  00044e22  2**0
+ 11 .debug_line   0000c442  00000000  00000000  00044e3a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  00002718  00000000  00000000  00051264  2**2
+ 12 .debug_frame  00002718  00000000  00000000  0005127c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    00003ded  00000000  00000000  0005397c  2**0
+ 13 .debug_str    00003ded  00000000  00000000  00053994  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    000178c0  00000000  00000000  00057769  2**0
+ 14 .debug_loc    000178c0  00000000  00000000  00057781  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000050  00000000  00000000  0006f02c  2**2
+ 15 .debug_alt_sim_info 00000050  00000000  00000000  0006f044  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 000018d8  00000000  00000000  0006f080  2**3
+ 16 .debug_ranges 000018d8  00000000  00000000  0006f098  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  0007433a  2**0
+ 17 .thread_model 00000003  00000000  00000000  00074352  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000c  00000000  00000000  0007433d  2**0
+ 18 .cpu          0000000c  00000000  00000000  00074355  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  00074349  2**0
+ 19 .qsys         00000001  00000000  00000000  00074361  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  0007434a  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  00074362  2**0
                   CONTENTS, READONLY
- 21 .sysid_hash   00000004  00000000  00000000  0007434b  2**0
+ 21 .sysid_hash   00000004  00000000  00000000  00074363  2**0
                   CONTENTS, READONLY
- 22 .sysid_base   00000004  00000000  00000000  0007434f  2**0
+ 22 .sysid_base   00000004  00000000  00000000  00074367  2**0
                   CONTENTS, READONLY
- 23 .sysid_time   00000004  00000000  00000000  00074353  2**0
+ 23 .sysid_time   00000004  00000000  00000000  0007436b  2**0
                   CONTENTS, READONLY
- 24 .stderr_dev   00000009  00000000  00000000  00074357  2**0
+ 24 .stderr_dev   00000009  00000000  00000000  0007436f  2**0
                   CONTENTS, READONLY
- 25 .stdin_dev    00000009  00000000  00000000  00074360  2**0
+ 25 .stdin_dev    00000009  00000000  00000000  00074378  2**0
                   CONTENTS, READONLY
- 26 .stdout_dev   00000009  00000000  00000000  00074369  2**0
+ 26 .stdout_dev   00000009  00000000  00000000  00074381  2**0
                   CONTENTS, READONLY
- 27 .sopc_system_name 0000000b  00000000  00000000  00074372  2**0
+ 27 .sopc_system_name 0000000b  00000000  00000000  0007438a  2**0
                   CONTENTS, READONLY
- 28 .quartus_project_dir 00000049  00000000  00000000  0007437d  2**0
+ 28 .quartus_project_dir 00000049  00000000  00000000  00074395  2**0
                   CONTENTS, READONLY
- 29 .jdi          00005ad8  00000000  00000000  000743c6  2**0
+ 29 .jdi          00005ad8  00000000  00000000  000743de  2**0
                   CONTENTS, READONLY
- 30 .sopcinfo     000723e4  00000000  00000000  00079e9e  2**0
+ 30 .sopcinfo     000723e4  00000000  00000000  00079eb6  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -4035,6 +4035,7 @@ void sobel_x( unsigned char *source ) {
     1fbc:	df000404 	addi	fp,sp,16
     1fc0:	e13fff15 	stw	r4,-4(fp)
    int x,y;
+   int idx;
    //unrolling loop
 
    short result = 0;
@@ -4077,8 +4078,8 @@ void sobel_x( unsigned char *source ) {
     2024:	1885883a 	add	r2,r3,r2
     2028:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[0]*
-    202c:	00bfffc4 	movi	r2,-1
+            result += *gx_array[1]*
+    202c:	00bfff84 	movi	r2,-2
     2030:	10c03fcc 	andi	r3,r2,255
     2034:	18c0201c 	xori	r3,r3,128
     2038:	18ffe004 	addi	r3,r3,-128
@@ -4098,7 +4099,7 @@ void sobel_x( unsigned char *source ) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
             result += *gx_array[0]*
                   source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[0]*
+            result += *gx_array[1]*
     2064:	10803fcc 	andi	r2,r2,255
     2068:	1885383a 	mul	r2,r3,r2
     206c:	1007883a 	mov	r3,r2
@@ -4106,12 +4107,12 @@ void sobel_x( unsigned char *source ) {
     2074:	1885883a 	add	r2,r3,r2
     2078:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y)*sobel_width+(x+1)];
-            result += *gx_array[0]*
+            result += *gx_array[2]*
     207c:	00bfffc4 	movi	r2,-1
     2080:	10c03fcc 	andi	r3,r2,255
     2084:	18c0201c 	xori	r3,r3,128
     2088:	18ffe004 	addi	r3,r3,-128
-            		source[(y)*sobel_width+(x+2)];
+                  source[(y)*sobel_width+(x+2)];
     208c:	d126cf17 	ldw	r4,-25796(gp)
     2090:	e0bffd17 	ldw	r2,-12(fp)
     2094:	2089383a 	mul	r4,r4,r2
@@ -4125,18 +4126,18 @@ void sobel_x( unsigned char *source ) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
             result += *gx_array[0]*
                   source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[0]*
+            result += *gx_array[1]*
                   source[(y)*sobel_width+(x+1)];
-            result += *gx_array[0]*
+            result += *gx_array[2]*
     20b4:	10803fcc 	andi	r2,r2,255
     20b8:	1885383a 	mul	r2,r3,r2
     20bc:	1007883a 	mov	r3,r2
     20c0:	e0bffe0b 	ldhu	r2,-8(fp)
     20c4:	1885883a 	add	r2,r3,r2
     20c8:	e0bffe0d 	sth	r2,-8(fp)
-            		source[(y)*sobel_width+(x+2)];
-            result += *gx_array[0]*
-    20cc:	00bfffc4 	movi	r2,-1
+                  source[(y)*sobel_width+(x+2)];
+            result += *gx_array[3]*
+    20cc:	0005883a 	mov	r2,zero
     20d0:	10c03fcc 	andi	r3,r2,255
     20d4:	18c0201c 	xori	r3,r3,128
     20d8:	18ffe004 	addi	r3,r3,-128
@@ -4152,11 +4153,11 @@ void sobel_x( unsigned char *source ) {
     20fc:	1105883a 	add	r2,r2,r4
     2100:	10800003 	ldbu	r2,0(r2)
                   source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[0]*
+            result += *gx_array[1]*
                   source[(y)*sobel_width+(x+1)];
-            result += *gx_array[0]*
-            		source[(y)*sobel_width+(x+2)];
-            result += *gx_array[0]*
+            result += *gx_array[2]*
+                  source[(y)*sobel_width+(x+2)];
+            result += *gx_array[3]*
     2104:	10803fcc 	andi	r2,r2,255
     2108:	1885383a 	mul	r2,r3,r2
     210c:	1007883a 	mov	r3,r2
@@ -4165,8 +4166,8 @@ void sobel_x( unsigned char *source ) {
     2118:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y)*sobel_width+(x+3)];
                   
-            result += *gx_array[1]*
-    211c:	00bfff84 	movi	r2,-2
+            result += *gx_array[3]*
+    211c:	0005883a 	mov	r2,zero
     2120:	10c03fcc 	andi	r3,r2,255
     2124:	18c0201c 	xori	r3,r3,128
     2128:	18ffe004 	addi	r3,r3,-128
@@ -4181,12 +4182,12 @@ void sobel_x( unsigned char *source ) {
     2148:	e0bfff17 	ldw	r2,-4(fp)
     214c:	1105883a 	add	r2,r2,r4
     2150:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[0]*
-            		source[(y)*sobel_width+(x+2)];
-            result += *gx_array[0]*
+            result += *gx_array[2]*
+                  source[(y)*sobel_width+(x+2)];
+            result += *gx_array[3]*
                   source[(y)*sobel_width+(x+3)];
                   
-            result += *gx_array[1]*
+            result += *gx_array[3]*
     2154:	10803fcc 	andi	r2,r2,255
     2158:	1885383a 	mul	r2,r3,r2
     215c:	1007883a 	mov	r3,r2
@@ -4194,8 +4195,8 @@ void sobel_x( unsigned char *source ) {
     2164:	1885883a 	add	r2,r3,r2
     2168:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+1)*sobel_width+(x)];
-            result += *gx_array[1]*
-    216c:	00bfff84 	movi	r2,-2
+            result += *gx_array[3+1]*
+    216c:	0005883a 	mov	r2,zero
     2170:	10c03fcc 	andi	r3,r2,255
     2174:	18c0201c 	xori	r3,r3,128
     2178:	18ffe004 	addi	r3,r3,-128
@@ -4211,12 +4212,12 @@ void sobel_x( unsigned char *source ) {
     219c:	e0bfff17 	ldw	r2,-4(fp)
     21a0:	1105883a 	add	r2,r2,r4
     21a4:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[0]*
+            result += *gx_array[3]*
                   source[(y)*sobel_width+(x+3)];
                   
-            result += *gx_array[1]*
+            result += *gx_array[3]*
                   source[(y+1)*sobel_width+(x)];
-            result += *gx_array[1]*
+            result += *gx_array[3+1]*
     21a8:	10803fcc 	andi	r2,r2,255
     21ac:	1885383a 	mul	r2,r3,r2
     21b0:	1007883a 	mov	r3,r2
@@ -4224,8 +4225,8 @@ void sobel_x( unsigned char *source ) {
     21b8:	1885883a 	add	r2,r3,r2
     21bc:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+1)*sobel_width+(x+1)];
-            result += *gx_array[1]*
-    21c0:	00bfff84 	movi	r2,-2
+            result += *gx_array[3+2]*
+    21c0:	0005883a 	mov	r2,zero
     21c4:	10c03fcc 	andi	r3,r2,255
     21c8:	18c0201c 	xori	r3,r3,128
     21cc:	18ffe004 	addi	r3,r3,-128
@@ -4242,11 +4243,11 @@ void sobel_x( unsigned char *source ) {
     21f4:	1105883a 	add	r2,r2,r4
     21f8:	10800003 	ldbu	r2,0(r2)
                   
-            result += *gx_array[1]*
+            result += *gx_array[3]*
                   source[(y+1)*sobel_width+(x)];
-            result += *gx_array[1]*
+            result += *gx_array[3+1]*
                   source[(y+1)*sobel_width+(x+1)];
-            result += *gx_array[1]*
+            result += *gx_array[3+2]*
     21fc:	10803fcc 	andi	r2,r2,255
     2200:	1885383a 	mul	r2,r3,r2
     2204:	1007883a 	mov	r3,r2
@@ -4254,8 +4255,8 @@ void sobel_x( unsigned char *source ) {
     220c:	1885883a 	add	r2,r3,r2
     2210:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+1)*sobel_width+(x+2)];
-            result += *gx_array[1]*
-    2214:	00bfff84 	movi	r2,-2
+            result += *gx_array[3+3]*
+    2214:	0005883a 	mov	r2,zero
     2218:	10c03fcc 	andi	r3,r2,255
     221c:	18c0201c 	xori	r3,r3,128
     2220:	18ffe004 	addi	r3,r3,-128
@@ -4272,11 +4273,11 @@ void sobel_x( unsigned char *source ) {
     2248:	1105883a 	add	r2,r2,r4
     224c:	10800003 	ldbu	r2,0(r2)
                   source[(y+1)*sobel_width+(x)];
-            result += *gx_array[1]*
+            result += *gx_array[3+1]*
                   source[(y+1)*sobel_width+(x+1)];
-            result += *gx_array[1]*
+            result += *gx_array[3+2]*
                   source[(y+1)*sobel_width+(x+2)];
-            result += *gx_array[1]*
+            result += *gx_array[3+3]*
     2250:	10803fcc 	andi	r2,r2,255
     2254:	1885383a 	mul	r2,r3,r2
     2258:	1007883a 	mov	r3,r2
@@ -4285,8 +4286,8 @@ void sobel_x( unsigned char *source ) {
     2264:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+1)*sobel_width+(x+3)];
 
-            result += *gx_array[2]*
-    2268:	00bfffc4 	movi	r2,-1
+            result += *gx_array[6]*
+    2268:	0005883a 	mov	r2,zero
     226c:	10c03fcc 	andi	r3,r2,255
     2270:	18c0201c 	xori	r3,r3,128
     2274:	18ffe004 	addi	r3,r3,-128
@@ -4301,12 +4302,12 @@ void sobel_x( unsigned char *source ) {
     2294:	e0bfff17 	ldw	r2,-4(fp)
     2298:	1105883a 	add	r2,r2,r4
     229c:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[1]*
+            result += *gx_array[3+2]*
                   source[(y+1)*sobel_width+(x+2)];
-            result += *gx_array[1]*
+            result += *gx_array[3+3]*
                   source[(y+1)*sobel_width+(x+3)];
 
-            result += *gx_array[2]*
+            result += *gx_array[6]*
     22a0:	10803fcc 	andi	r2,r2,255
     22a4:	1885383a 	mul	r2,r3,r2
     22a8:	1007883a 	mov	r3,r2
@@ -4314,8 +4315,8 @@ void sobel_x( unsigned char *source ) {
     22b0:	1885883a 	add	r2,r3,r2
     22b4:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+2)*sobel_width+(x)];
-            result += *gx_array[2]*
-    22b8:	00bfffc4 	movi	r2,-1
+            result += *gx_array[6+1]*
+    22b8:	0005883a 	mov	r2,zero
     22bc:	10c03fcc 	andi	r3,r2,255
     22c0:	18c0201c 	xori	r3,r3,128
     22c4:	18ffe004 	addi	r3,r3,-128
@@ -4331,12 +4332,12 @@ void sobel_x( unsigned char *source ) {
     22e8:	e0bfff17 	ldw	r2,-4(fp)
     22ec:	1105883a 	add	r2,r2,r4
     22f0:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[1]*
+            result += *gx_array[3+3]*
                   source[(y+1)*sobel_width+(x+3)];
 
-            result += *gx_array[2]*
+            result += *gx_array[6]*
                   source[(y+2)*sobel_width+(x)];
-            result += *gx_array[2]*
+            result += *gx_array[6+1]*
     22f4:	10803fcc 	andi	r2,r2,255
     22f8:	1885383a 	mul	r2,r3,r2
     22fc:	1007883a 	mov	r3,r2
@@ -4344,8 +4345,8 @@ void sobel_x( unsigned char *source ) {
     2304:	1885883a 	add	r2,r3,r2
     2308:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+2)*sobel_width+(x+1)];
-            result += *gx_array[2]*
-    230c:	00bfffc4 	movi	r2,-1
+            result += *gx_array[6+2]*
+    230c:	0005883a 	mov	r2,zero
     2310:	10c03fcc 	andi	r3,r2,255
     2314:	18c0201c 	xori	r3,r3,128
     2318:	18ffe004 	addi	r3,r3,-128
@@ -4362,11 +4363,11 @@ void sobel_x( unsigned char *source ) {
     2340:	1105883a 	add	r2,r2,r4
     2344:	10800003 	ldbu	r2,0(r2)
 
-            result += *gx_array[2]*
+            result += *gx_array[6]*
                   source[(y+2)*sobel_width+(x)];
-            result += *gx_array[2]*
+            result += *gx_array[6+1]*
                   source[(y+2)*sobel_width+(x+1)];
-            result += *gx_array[2]*
+            result += *gx_array[6+2]*
     2348:	10803fcc 	andi	r2,r2,255
     234c:	1885383a 	mul	r2,r3,r2
     2350:	1007883a 	mov	r3,r2
@@ -4374,8 +4375,8 @@ void sobel_x( unsigned char *source ) {
     2358:	1885883a 	add	r2,r3,r2
     235c:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+2)*sobel_width+(x+2)];
-            result += *gx_array[2]*
-    2360:	00bfffc4 	movi	r2,-1
+            result += *gx_array[6+3]*
+    2360:	0005883a 	mov	r2,zero
     2364:	10c03fcc 	andi	r3,r2,255
     2368:	18c0201c 	xori	r3,r3,128
     236c:	18ffe004 	addi	r3,r3,-128
@@ -4392,11 +4393,11 @@ void sobel_x( unsigned char *source ) {
     2394:	1105883a 	add	r2,r2,r4
     2398:	10800003 	ldbu	r2,0(r2)
                   source[(y+2)*sobel_width+(x)];
-            result += *gx_array[2]*
+            result += *gx_array[6+1]*
                   source[(y+2)*sobel_width+(x+1)];
-            result += *gx_array[2]*
+            result += *gx_array[6+2]*
                   source[(y+2)*sobel_width+(x+2)];
-            result += *gx_array[2]*
+            result += *gx_array[6+3]*
     239c:	10803fcc 	andi	r2,r2,255
     23a0:	1885383a 	mul	r2,r3,r2
     23a4:	1007883a 	mov	r3,r2
@@ -4405,7 +4406,7 @@ void sobel_x( unsigned char *source ) {
     23b0:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+2)*sobel_width+(x+3)];
 
-            result += *gx_array[3]*
+            result += *gx_array[12]*
     23b4:	0005883a 	mov	r2,zero
     23b8:	10c03fcc 	andi	r3,r2,255
     23bc:	18c0201c 	xori	r3,r3,128
@@ -4421,12 +4422,12 @@ void sobel_x( unsigned char *source ) {
     23e0:	e0bfff17 	ldw	r2,-4(fp)
     23e4:	1105883a 	add	r2,r2,r4
     23e8:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[2]*
+            result += *gx_array[6+2]*
                   source[(y+2)*sobel_width+(x+2)];
-            result += *gx_array[2]*
+            result += *gx_array[6+3]*
                   source[(y+2)*sobel_width+(x+3)];
 
-            result += *gx_array[3]*
+            result += *gx_array[12]*
     23ec:	10803fcc 	andi	r2,r2,255
     23f0:	1885383a 	mul	r2,r3,r2
     23f4:	1007883a 	mov	r3,r2
@@ -4434,7 +4435,7 @@ void sobel_x( unsigned char *source ) {
     23fc:	1885883a 	add	r2,r3,r2
     2400:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+3)*sobel_width+(x)];
-            result += *gx_array[3]*
+            result += *gx_array[12+1]*
     2404:	0005883a 	mov	r2,zero
     2408:	10c03fcc 	andi	r3,r2,255
     240c:	18c0201c 	xori	r3,r3,128
@@ -4451,12 +4452,12 @@ void sobel_x( unsigned char *source ) {
     2434:	e0bfff17 	ldw	r2,-4(fp)
     2438:	1105883a 	add	r2,r2,r4
     243c:	10800003 	ldbu	r2,0(r2)
-            result += *gx_array[2]*
+            result += *gx_array[6+3]*
                   source[(y+2)*sobel_width+(x+3)];
 
-            result += *gx_array[3]*
+            result += *gx_array[12]*
                   source[(y+3)*sobel_width+(x)];
-            result += *gx_array[3]*
+            result += *gx_array[12+1]*
     2440:	10803fcc 	andi	r2,r2,255
     2444:	1885383a 	mul	r2,r3,r2
     2448:	1007883a 	mov	r3,r2
@@ -4464,7 +4465,7 @@ void sobel_x( unsigned char *source ) {
     2450:	1885883a 	add	r2,r3,r2
     2454:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+3)*sobel_width+(x+1)];
-            result += *gx_array[3]*
+            result += *gx_array[12+2]*
     2458:	0005883a 	mov	r2,zero
     245c:	10c03fcc 	andi	r3,r2,255
     2460:	18c0201c 	xori	r3,r3,128
@@ -4482,11 +4483,11 @@ void sobel_x( unsigned char *source ) {
     248c:	1105883a 	add	r2,r2,r4
     2490:	10800003 	ldbu	r2,0(r2)
 
-            result += *gx_array[3]*
+            result += *gx_array[12]*
                   source[(y+3)*sobel_width+(x)];
-            result += *gx_array[3]*
+            result += *gx_array[12+1]*
                   source[(y+3)*sobel_width+(x+1)];
-            result += *gx_array[3]*
+            result += *gx_array[12+2]*
     2494:	10803fcc 	andi	r2,r2,255
     2498:	1885383a 	mul	r2,r3,r2
     249c:	1007883a 	mov	r3,r2
@@ -4494,7 +4495,7 @@ void sobel_x( unsigned char *source ) {
     24a4:	1885883a 	add	r2,r3,r2
     24a8:	e0bffe0d 	sth	r2,-8(fp)
                   source[(y+3)*sobel_width+(x+2)];
-            result += *gx_array[3]*
+            result += *gx_array[12+3]*
     24ac:	0005883a 	mov	r2,zero
     24b0:	10c03fcc 	andi	r3,r2,255
     24b4:	18c0201c 	xori	r3,r3,128
@@ -4512,11 +4513,11 @@ void sobel_x( unsigned char *source ) {
     24e0:	1105883a 	add	r2,r2,r4
     24e4:	10800003 	ldbu	r2,0(r2)
                   source[(y+3)*sobel_width+(x)];
-            result += *gx_array[3]*
+            result += *gx_array[12+1]*
                   source[(y+3)*sobel_width+(x+1)];
-            result += *gx_array[3]*
+            result += *gx_array[12+2]*
                   source[(y+3)*sobel_width+(x+2)];
-            result += *gx_array[3]*
+            result += *gx_array[12+3]*
     24e8:	10803fcc 	andi	r2,r2,255
     24ec:	1885383a 	mul	r2,r3,r2
     24f0:	1007883a 	mov	r3,r2
@@ -4548,7 +4549,7 @@ void sobel_x( unsigned char *source ) {
     2538:	10bfffc4 	addi	r2,r2,-1
     253c:	e0fffc17 	ldw	r3,-16(fp)
     2540:	18bea716 	blt	r3,r2,1fe0 <__alt_data_end+0xff001fe0>
-   int x,y;
+   int idx;
    //unrolling loop
 
    short result = 0;
@@ -4561,7 +4562,7 @@ void sobel_x( unsigned char *source ) {
     2554:	10bfffc4 	addi	r2,r2,-1
     2558:	e0fffd17 	ldw	r3,-12(fp)
     255c:	18be9d16 	blt	r3,r2,1fd4 <__alt_data_end+0xff001fd4>
-            result += *gx_array[3]*
+            result += *gx_array[12+3]*
                   source[(y+3)*sobel_width+(x+3)];
             sobel_x_result[y*sobel_width+x] = result;//sobel_mac(source,x,y,gx_array,sobel_width);
       }

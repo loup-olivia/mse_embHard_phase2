@@ -47,17 +47,18 @@ sobel y 3571428698
 sobel threshold 4191564118
 sobel conv grayscale in mode 4 : 4163372769
 ### unrolling outerloop
- <!-- sobel x m2 3
- sobel x def 3537313655
- sobel y 3540607309
- sobel threshold 4191431981
- sobel conv grayscale in mode 4 : 4164009408
- sobel x m2 3
- sobel x def 3536651518
- sobel y 3538946862 
- sobel threshold 4191641150
- sobel conv grayscale in mode 4 : 4167009569 -->
 sobel x m2 3
+sobel x def 3537313655
+sobel y 3540607309
+sobel threshold 4191431981
+sobel conv grayscale in mode 4 : 4164009408
+sobel x m2 3
+sobel x def 3536651518
+sobel y 3538946862 
+sobel threshold 4191641150
+sobel conv grayscale in mode 4 : 4167009569
+### inline
+<!-- sobel x m2 3
 sobel x def 3744589097
 sobel y 3750543802
 sobel threshold 4192105582
@@ -77,6 +78,15 @@ sobel x m2 3
 sobel x def 3744567064
 sobel y 3750610301
 sobel threshold 4192182994
-sobel conv grayscale in mode 4 : 4166579488
-
+sobel conv grayscale in mode 4 : 4166579488 -->
+ sobel x m2 3
+ sobel x def 3735036995
+ sobel y 3741287169
+ sobel threshold 4190434024
+ sobel conv grayscale in mode 4 : 4164508002
+ sobel x m2 3
+ sobel x def 3735192301
+ sobel y 3832226684
+ sobel threshold 0
+ sobel conv grayscale in mode 4 : 4164408571
 

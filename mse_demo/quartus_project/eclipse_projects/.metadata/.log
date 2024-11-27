@@ -852,3 +852,15 @@ org.apache.http.client.HttpResponseException: Not Found
 
 !ENTRY com.altera.sbtgui.launch 1 0 2024-11-27 20:53:20.027
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --tcpport=auto --sidp=0x10010d8 --id=0x0 --timestamp=1731245602]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-11-27 21:07:21.460
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --sidp=0x10010d8 --id=0x0 --timestamp=1731245602 /cygdrive/c/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel/sobel.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-11-27 21:07:28.410
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --tcpport=auto --sidp=0x10010d8 --id=0x0 --timestamp=1731245602]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-11-27 21:08:17.105
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --sidp=0x10010d8 --id=0x0 --timestamp=1731245602 /cygdrive/c/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel/sobel.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-11-27 21:08:24.158
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --tcpport=auto --sidp=0x10010d8 --id=0x0 --timestamp=1731245602]
