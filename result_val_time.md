@@ -47,13 +47,36 @@ sobel y 3571428698
 sobel threshold 4191564118
 sobel conv grayscale in mode 4 : 4163372769
 ### unrolling outerloop
- sobel x m2 3
+ <!-- sobel x m2 3
  sobel x def 3537313655
  sobel y 3540607309
  sobel threshold 4191431981
  sobel conv grayscale in mode 4 : 4164009408
  sobel x m2 3
  sobel x def 3536651518
- sobel y 3538946862
+ sobel y 3538946862 
  sobel threshold 4191641150
- sobel conv grayscale in mode 4 : 4167009569
+ sobel conv grayscale in mode 4 : 4167009569 -->
+sobel x m2 3
+sobel x def 3744589097
+sobel y 3750543802
+sobel threshold 4192105582
+sobel conv grayscale in mode 4 : 4164591665
+sobel x m2 3
+sobel x def 3746271437
+sobel y 3750328277
+sobel threshold 4192334969
+sobel conv grayscale in mode 4 : 4166140184
+#### 2nd test modif mac_sobel()
+sobel x m2 3
+sobel x def 3743923758
+sobel y 3750402916
+sobel threshold 4192174130
+sobel conv grayscale in mode 4 : 4165053014
+sobel x m2 3
+sobel x def 3744567064
+sobel y 3750610301
+sobel threshold 4192182994
+sobel conv grayscale in mode 4 : 4166579488
+
+
