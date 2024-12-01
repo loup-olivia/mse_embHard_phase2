@@ -57,36 +57,38 @@ sobel x def 3536651518
 sobel y 3538946862 
 sobel threshold 4191641150
 sobel conv grayscale in mode 4 : 4167009569
+### unrolling loop in "mac_sobel()" V2
+sobel x m2 3
+sobel x def 3880036515
+sobel y 3886779990
+sobel threshold 4190725616
+sobel conv grayscale in mode 4 : 4164613747
+sobel x m2 3
+sobel x def 3882815571
+sobel y 3880064633
+sobel threshold 4188247500
+sobel conv grayscale in mode 4 : 4166982322
+
+But seem have beug and crash after certain time (all value = 0)
+and I have no line on LDC
 ### inline
 <!-- sobel x m2 3
-sobel x def 3744589097
-sobel y 3750543802
-sobel threshold 4192105582
-sobel conv grayscale in mode 4 : 4164591665
+sobel x def 3608635862
+sobel y 3605359010
+sobel threshold 4190940188
+sobel conv grayscale in mode 4 : 4188551113
 sobel x m2 3
-sobel x def 3746271437
-sobel y 3750328277
-sobel threshold 4192334969
-sobel conv grayscale in mode 4 : 4166140184
-#### 2nd test modif mac_sobel()
+sobel x def 3605324534
+sobel y 3605358935
+sobel threshold 4190938205
+sobel conv grayscale in mode 4 : 4165055237 -->
 sobel x m2 3
-sobel x def 3743923758
-sobel y 3750402916
-sobel threshold 4192174130
-sobel conv grayscale in mode 4 : 4165053014
+sobel x def 3880460371
+sobel y 3880377942
+sobel threshold 4188022777
+sobel conv grayscale in mode 4 : 4163821931
 sobel x m2 3
-sobel x def 3744567064
-sobel y 3750610301
-sobel threshold 4192182994
-sobel conv grayscale in mode 4 : 4166579488 -->
- sobel x m2 3
- sobel x def 3735036995
- sobel y 3741287169
- sobel threshold 4190434024
- sobel conv grayscale in mode 4 : 4164508002
- sobel x m2 3
- sobel x def 3735192301
- sobel y 3832226684
- sobel threshold 0
- sobel conv grayscale in mode 4 : 4164408571
-
+sobel x def 3880321009
+sobel y 3880346338
+sobel threshold 4188201942
+sobel conv grayscale in mode 4 : 4163308575

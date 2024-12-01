@@ -47,100 +47,44 @@ void init_sobel_arrays(int width , int height) {
 	}
 }
 
-short sobel_mac( unsigned char *pixels,
+static inline short sobel_mac( unsigned char *pixels,
                  int x,
                  int y,
                  const char *filter,
                  unsigned int width ) {
-   short dy=-1;
-   short dx=-1;
    short result = 0;
    //unrolling inner loop
    // unrolling all loops
    result += filter[0]*
-         pixels[(y)*width+(x)];
+         pixels[(y-1)*width+(x-1)];
    result += filter[1]*
-         pixels[(y)*width+(x+1)];
+         pixels[(y-1)*width+(x)];
    result += filter[2]*
-         pixels[(y)*width+(x+2)];
+         pixels[(y-1)*width+(x+1)];
+
    result += filter[3]*
-         pixels[(y)*width+(x+3)];
-         
-   result += filter[(1)*3]*
+         pixels[y*width+(x-1)];
+   result += filter[4]*
+         pixels[y*width+(x)];
+   result += filter[5]*
+         pixels[y*width+(x+1)];
+
+   result += filter[6]*
+         pixels[(y+1)*width+(x-1)];
+   result += filter[7]*
          pixels[(y+1)*width+(x)];
-   result += filter[(1)*3+(1)]*
-         pixels[(y+1)*width+(2)];
-   result += filter[(1)*3+(3)]*
-         pixels[(y+1)*width+(x+2)];
-   result += filter[(1)*3+(4)]*
-         pixels[(y+1)*width+(x+3)];
+   result += filter[8]*
+         pixels[(y+1)*width+(x+1)];
 
-   result += filter[(2)*3]*
-         pixels[(y+2)*width+(x)];
-   result += filter[(2)*3+(1)]*
-         pixels[(y+2)*width+(x+1)];
-   result += filter[(2)*3+(2)]*
-         pixels[(y+2)*width+(x+2)];
-   result += filter[(2)*3+(3)]*
-         pixels[(y+2)*width+(x+3)];
-
-   result += filter[(3)*3]*
-         pixels[(y+3)*width+(x)];
-   result += filter[(3)*3+(1)]*
-         pixels[(y+3)*width+(x+1)];
-   result += filter[(3)*3+(2)]*
-         pixels[(y+3)*width+(x+2)];
-   result += filter[(3)*3+(3)]*
-         pixels[(y+3)*width+(x+3)];
    return result;
 }
 
 void sobel_x( unsigned char *source ) {
    int x,y;
-   int idx;
-   //unrolling loop
-
-   short result = 0;
-   #pragma unroll
+   //inline call
    for (y = 1 ; y < (sobel_height-1) ; y++) {
-      #pragma unroll
       for (x = 1 ; x < (sobel_width-1) ; x++) {
-            result += *gx_array[0]*
-                  source[(y)*sobel_width+(x)];//;//*
-            result += *gx_array[1]*
-                  source[(y)*sobel_width+(x+1)];
-            result += *gx_array[2]*
-                  source[(y)*sobel_width+(x+2)];
-            result += *gx_array[3]*
-                  source[(y)*sobel_width+(x+3)];
-                  
-            result += *gx_array[3]*
-                  source[(y+1)*sobel_width+(x)];
-            result += *gx_array[3+1]*
-                  source[(y+1)*sobel_width+(x+1)];
-            result += *gx_array[3+2]*
-                  source[(y+1)*sobel_width+(x+2)];
-            result += *gx_array[3+3]*
-                  source[(y+1)*sobel_width+(x+3)];
-
-            result += *gx_array[6]*
-                  source[(y+2)*sobel_width+(x)];
-            result += *gx_array[6+1]*
-                  source[(y+2)*sobel_width+(x+1)];
-            result += *gx_array[6+2]*
-                  source[(y+2)*sobel_width+(x+2)];
-            result += *gx_array[6+3]*
-                  source[(y+2)*sobel_width+(x+3)];
-
-            result += *gx_array[12]*
-                  source[(y+3)*sobel_width+(x)];
-            result += *gx_array[12+1]*
-                  source[(y+3)*sobel_width+(x+1)];
-            result += *gx_array[12+2]*
-                  source[(y+3)*sobel_width+(x+2)];
-            result += *gx_array[12+3]*
-                  source[(y+3)*sobel_width+(x+3)];
-            sobel_x_result[y*sobel_width+x] = result;//sobel_mac(source,x,y,gx_array,sobel_width);
+    	  	  sobel_mac(source,x,y,gx_array,sobel_width);
       }
    }
 }
@@ -164,47 +108,10 @@ void sobel_x_with_rgb( unsigned char *source ) {
 
 void sobel_y( unsigned char *source ) {
    int x,y;
-   short result = 0;
-   #pragma unroll
+   //inline call
    for (y = 1 ; y < (sobel_height-1) ; y++) {
-      #pragma unroll
       for (x = 1 ; x < (sobel_width-1) ; x++) {
-            result += *gy_array[0]*
-                  source[(y)*sobel_width+(x)];
-            result += *gy_array[0]*
-                  source[(y)*sobel_width+(x+1)];
-            result += *gy_array[0]*
-            		source[(y)*sobel_width+(x+2)];
-            result += *gy_array[0]*
-                  source[(y)*sobel_width+(x+3)];
-                  
-            result += *gy_array[1]*
-                  source[(y+1)*sobel_width+(x)];
-            result += *gy_array[1]*
-                  source[(y+1)*sobel_width+(x+1)];
-            result += *gy_array[1]*
-            		source[(y+1)*sobel_width+(x+2)];
-            result += *gy_array[1]*
-                  source[(y+1)*sobel_width+(x+3)];
-
-            result += *gy_array[2]*
-                  source[(y+2)*sobel_width+(x)];
-            result += *gy_array[2]*
-                  source[(y+2)*sobel_width+(x+1)];
-            result += *gy_array[2]*
-            		source[(y+2)*sobel_width+(x+2)];
-            result += *gy_array[2]*
-                  source[(y+2)*sobel_width+(x+3)];
-
-            result += *gy_array[3]*
-                  source[(y+3)*sobel_width+(x)];
-            result += *gy_array[3]*
-                  source[(y+3)*sobel_width+(x+1)];
-            result += *gy_array[3]*
-            		source[(y+3)*sobel_width+(x+2)];
-            result += *gy_array[3]*
-                  source[(y+3)*sobel_width+(x+3)];
-            sobel_x_result[y*sobel_width+x] = result;//sobel_mac(source,x,y,gx_array,sobel_width);
+    	  	  sobel_mac(source,x,y,gx_array,sobel_width);
       }
    }
 }
