@@ -126,10 +126,9 @@ int main()
 						end_sobel_conv_graycale = alt_timestamp();
                        	grayscale = get_grayscale_picture();
 					   	start_sobel_x =  alt_timestamp();
-                       	sobel_x(grayscale);
+					   	start_sobel_y =  alt_timestamp();
+					   	sobel_complete(grayscale);
 						end_sobel_x = alt_timestamp();
-                       	start_sobel_y =  alt_timestamp();
-						sobel_y(grayscale);
                        	end_sobel_y = alt_timestamp();
                        	start_sobel_threshold =  alt_timestamp();
 						sobel_threshold(128);

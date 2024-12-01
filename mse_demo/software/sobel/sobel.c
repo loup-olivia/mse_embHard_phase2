@@ -78,6 +78,16 @@ static inline short sobel_mac( unsigned char *pixels,
 
    return result;
 }
+void sobel_complete( unsigned char *source ){
+   int x,y;
+   //inline call
+   for (y = 1 ; y < (sobel_height-1) ; y++) {
+	  for (x = 1 ; x < (sobel_width-1) ; x++) {
+			  sobel_mac(source,x,y,gx_array,sobel_width);
+			  sobel_mac(source,x,y,gy_array,sobel_width);
+	  }
+   }
+}
 
 void sobel_x( unsigned char *source ) {
    int x,y;
@@ -111,7 +121,7 @@ void sobel_y( unsigned char *source ) {
    //inline call
    for (y = 1 ; y < (sobel_height-1) ; y++) {
       for (x = 1 ; x < (sobel_width-1) ; x++) {
-    	  	  sobel_mac(source,x,y,gx_array,sobel_width);
+    	  	  sobel_mac(source,x,y,gy_array,sobel_width);
       }
    }
 }

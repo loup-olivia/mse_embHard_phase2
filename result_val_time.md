@@ -71,6 +71,7 @@ sobel conv grayscale in mode 4 : 4166982322
 
 But seem have beug and crash after certain time (all value = 0)
 and I have no line on LDC
+## In-lining
 ### inline
 <!-- sobel x m2 3
 sobel x def 3608635862
@@ -92,3 +93,41 @@ sobel x def 3880321009
 sobel y 3880346338
 sobel threshold 4188201942
 sobel conv grayscale in mode 4 : 4163308575
+#### Inline v2 (correction)
+sobel x m2 3
+sobel x def 3880863466
+sobel y 3880634456
+sobel threshold 4188890045
+sobel conv grayscale in mode 4 : 4163329161
+sobel x m2 3
+sobel x def 3880858055
+sobel y 3880620639
+sobel threshold 4189734122
+sobel conv grayscale in mode 4 : 4163624897
+
+### In on function
+sobel x m2 3
+sobel x def 3492517512
+sobel y 3492517516
+sobel threshold 4188996078
+sobel conv grayscale in mode 4 : 4165844741
+sobel x m2 3
+sobel x def 3500285641
+sobel y 3500285641
+sobel threshold 4189048541
+sobel conv grayscale in mode 4 : 4165314044
+
+Il n'y a pas une vraie amélioration. Cela peut-être dûe au fait qu'on attend
+dans les deux cas que les deux fontions tournent.
+## 4 Code improvement
+Dans les deux cas, si les variables "heigth" & "width" sont définis à la 
+compilation. Il serait possible d'utiliser ```#pragma unroll``` pour dérouler 
+les boucles for
+### Other change in sobel.c
+- "sobel_mac" : do calcul of y in start of code (not in all calcul)
+- "sobel_mac" : try pragma unroll?
+- "sobel_x_with_rgb" : absolue de ```result``` pour enlever le *if()else()*
+- "sobel_threshold" : enlever opération ternaire et utiliser la valeur absolue de ```value```
+
+### Other change in grayscale.c
+- "conv_grayscale" : passer la divison */= 100* par un décalage $2^6$
