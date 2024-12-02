@@ -53,14 +53,25 @@ static inline short sobel_mac( unsigned char *pixels,
                  const char *filter,
                  unsigned int width ) {
    short result = 0;
+   short dy,dx;
+   int idy;
+/*   #pragma unroll 1
+   for (dy = -1 ; dy < 2 ; dy++) {
+	  #pragma unroll 3
+      for (dx = -1 ; dx < 2 ; dx++) {
+         result += filter[(dy+1)*3+(dx+1)]*
+                   pixels[(y+dy)*width+(x+dx)];
+      }
+   }*/
    //unrolling inner loop
    // unrolling all loops
+   idy = y-1;
    result += filter[0]*
-         pixels[(y-1)*width+(x-1)];
+         pixels[idy*width+(x-1)];
    result += filter[1]*
-         pixels[(y-1)*width+(x)];
+         pixels[idy*width+(x)];
    result += filter[2]*
-         pixels[(y-1)*width+(x+1)];
+         pixels[idy*width+(x+1)];
 
    result += filter[3]*
          pixels[y*width+(x-1)];
@@ -68,13 +79,13 @@ static inline short sobel_mac( unsigned char *pixels,
          pixels[y*width+(x)];
    result += filter[5]*
          pixels[y*width+(x+1)];
-
+   idy = y+1;
    result += filter[6]*
-         pixels[(y+1)*width+(x-1)];
+         pixels[idy*width+(x-1)];
    result += filter[7]*
-         pixels[(y+1)*width+(x)];
+         pixels[idy*width+(x)];
    result += filter[8]*
-         pixels[(y+1)*width+(x+1)];
+         pixels[idy*width+(x+1)];
 
    return result;
 }
@@ -151,9 +162,9 @@ void sobel_threshold(short threshold) {
 		for (x = 1 ; x < (sobel_width-1) ; x++) {
 			arrayindex = (y*sobel_width)+x;
 			value = sobel_x_result[arrayindex];
-			sum = (value < 0) ? -value : value;
+			sum = abs(value);
 			value = sobel_y_result[arrayindex];
-			sum += (value < 0) ? -value : value;
+			sum += abs(value);
 			sobel_result[arrayindex] = (sum > threshold) ? 0xFF : 0;
 		}
 	}

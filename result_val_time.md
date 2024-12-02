@@ -124,10 +124,38 @@ Dans les deux cas, si les variables "heigth" & "width" sont définis à la
 compilation. Il serait possible d'utiliser ```#pragma unroll``` pour dérouler 
 les boucles for
 ### Other change in sobel.c
-- "sobel_mac" : do calcul of y in start of code (not in all calcul)
-- "sobel_mac" : try pragma unroll?
-- "sobel_x_with_rgb" : absolue de ```result``` pour enlever le *if()else()*
-- "sobel_threshold" : enlever opération ternaire et utiliser la valeur absolue de ```value```
+1. "sobel_mac" : do calcul of y in start of code (not in all calcul)
+2. "sobel_mac" : pragma unroll (seulement en optimisation -02 ou -03)
+3. "sobel_x_with_rgb" : absolue de ```result``` pour enlever le *if()else()*
+4. "sobel_threshold" : enlever opération ternaire et utiliser la valeur absolue de ```value```
 
 ### Other change in grayscale.c
-- "conv_grayscale" : passer la divison */= 100* par un décalage $2^6$
+1. "conv_grayscale" : passer la divison */= 100* par un décalage $2^6$
+
+### Result with 1, 4 of sobel.c and 1 onf grayscale.c
+sobel x m2 3
+sobel x def 3490592592
+sobel y 3490592592
+sobel threshold 4191854408
+sobel conv grayscale in mode 4 : 4 194 765 795
+sobel x m2 3
+sobel x def 3490377765
+sobel y 3490377765
+sobel threshold 4191430559
+sobel conv grayscale in mode 4 : 4194896656
+#### correction diff
+sobel x m2 4294967293
+sobel x def 804586939
+sobel y 804586939
+sobel threshold 102904932
+sobel conv grayscale in mode 4 : 99984593
+sobel x m2 4294967293
+sobel x def 805239257
+sobel y 805239264
+sobel threshold 104377258
+sobel conv grayscale in mode 4 : 100033095
+Sum : 1812063403
+CPU Cycle/pixels = (sobel x +sobel y +sobel threshold +sobel conv)/196612 
+196612 = nbr pixels
+With this, CPU Cycle/pixels : ~9216
+objectif sum : 438444760

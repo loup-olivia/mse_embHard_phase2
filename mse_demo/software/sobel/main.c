@@ -144,11 +144,11 @@ int main()
 		      	  	   	break;
 		      }
 		  }
-		  printf("sobel x m2 %lu\n",start_sobel_x_m2-end_sobel_x_m2);
-		  printf("sobel x def %lu\n",start_sobel_x-end_sobel_x);
-		  printf("sobel y %lu\n",start_sobel_y-end_sobel_y);
-		  printf("sobel threshold %lu\n",start_sobel_threshold-end_sobel_threshold);
-		  printf("sobel conv grayscale in mode %d : %lu\n",mode,start_sobel_conv_graycale-end_sobel_conv_graycale);
+		  printf("sobel x m2 %lu\n",end_sobel_x_m2-start_sobel_x_m2);
+		  printf("sobel x def %lu\n",end_sobel_x-start_sobel_x);
+		  printf("sobel y %lu\n",end_sobel_y-start_sobel_y);
+		  printf("sobel threshold %lu\n",end_sobel_threshold-start_sobel_threshold);
+		  printf("sobel conv grayscale in mode %d : %lu\n",mode,end_sobel_conv_graycale-start_sobel_conv_graycale);
 	  }
   } while (1);
   return 0;
