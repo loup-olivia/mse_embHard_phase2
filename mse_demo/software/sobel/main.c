@@ -21,6 +21,8 @@ int main()
   unsigned char current_mode;
   unsigned char mode;
   // vairable to save time
+  alt_u32 start_sobel;
+  alt_u32 end_sobel;
   alt_u32 start_sobel_x_m2 ;
   alt_u32 end_sobel_x_m2;
   alt_u32 start_sobel_x;
@@ -125,11 +127,16 @@ int main()
 	                                  cam_get_ysize());
 						end_sobel_conv_graycale = alt_timestamp();
                        	grayscale = get_grayscale_picture();
+                       	start_sobel = alt_timestamp();
+                       	sobel_complete(grayscale);
+                       	end_sobel = alt_timestamp();
+                       	/*
 					   	start_sobel_x =  alt_timestamp();
+					   	sobel_x(grayscale);
+					   	end_sobel_x = alt_timestamp();
 					   	start_sobel_y =  alt_timestamp();
-					   	sobel_complete(grayscale);
-						end_sobel_x = alt_timestamp();
-                       	end_sobel_y = alt_timestamp();
+					   	sobel_y(grayscale);
+                       	end_sobel_y = alt_timestamp();*/
                        	start_sobel_threshold =  alt_timestamp();
 						sobel_threshold(128);
 		               	end_sobel_threshold = alt_timestamp();
@@ -144,9 +151,9 @@ int main()
 		      	  	   	break;
 		      }
 		  }
-		  printf("sobel x m2 %lu\n",end_sobel_x_m2-start_sobel_x_m2);
-		  printf("sobel x def %lu\n",end_sobel_x-start_sobel_x);
-		  printf("sobel y %lu\n",end_sobel_y-start_sobel_y);
+		  printf("sobel %lu\n",end_sobel-start_sobel);
+		  //printf("sobel x def %lu\n",end_sobel_x-start_sobel_x);
+		  //printf("sobel y %lu\n",end_sobel_y-start_sobel_y);
 		  printf("sobel threshold %lu\n",end_sobel_threshold-start_sobel_threshold);
 		  printf("sobel conv grayscale in mode %d : %lu\n",mode,end_sobel_conv_graycale-start_sobel_conv_graycale);
 	  }
