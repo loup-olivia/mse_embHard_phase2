@@ -164,7 +164,7 @@ static inline short sobel_mac_all( unsigned char *pixels,
 
    return result;
 }
-void sobel_complete( unsigned char * source )
+void sobel_complete_V2( unsigned char * source )
 {
     int x,y;
     int index_array[4]= {0,0,0,0};

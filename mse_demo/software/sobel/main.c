@@ -23,12 +23,12 @@ int main()
   // vairable to save time
   alt_u32 start_sobel;
   alt_u32 end_sobel;
-  alt_u32 start_sobel_x_m2 ;
+  /*alt_u32 start_sobel_x_m2 ;
   alt_u32 end_sobel_x_m2;
   alt_u32 start_sobel_x;
   alt_u32 end_sobel_x;
   alt_u32 start_sobel_y;
-  alt_u32 end_sobel_y;
+  alt_u32 end_sobel_y;*/
   alt_u32 start_sobel_threshold;
   alt_u32 end_sobel_threshold;
   alt_u32 start_sobel_conv_graycale;
@@ -107,9 +107,9 @@ int main()
 		    		                  cam_get_ysize());
 						end_sobel_conv_graycale = alt_timestamp();
 		               	grayscale = get_grayscale_picture();
-					   	start_sobel_x_m2 =  alt_timestamp();
+					   	//start_sobel_x_m2 =  alt_timestamp();
 		               	sobel_x(grayscale);
-						end_sobel_x_m2 = alt_timestamp();
+						//end_sobel_x_m2 = alt_timestamp();
 		               	sobel_y_with_rgb(grayscale);
 		               	image = GetSobel_rgb();
 		               	transfer_LCD_with_dma(&image[16520],
@@ -128,7 +128,7 @@ int main()
 						end_sobel_conv_graycale = alt_timestamp();
                        	grayscale = get_grayscale_picture();
                        	start_sobel = alt_timestamp();
-                       	sobel_complete(grayscale);
+                       	sobel_complete_V2(grayscale);
                        	end_sobel = alt_timestamp();
                        	/*
 					   	start_sobel_x =  alt_timestamp();

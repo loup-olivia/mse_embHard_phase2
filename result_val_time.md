@@ -128,21 +128,12 @@ les boucles for
 2. "sobel_mac" : pragma unroll (seulement en optimisation -02 ou -03)
 3. "sobel_x_with_rgb" : absolue de ```result``` pour enlever le *if()else()*
 4. "sobel_threshold" : enlever opération ternaire et utiliser la valeur absolue de ```value```
+5. "sobel_x_with_rgb" : diminuer les multiplications
 
 ### Other change in grayscale.c
 1. "conv_grayscale" : passer la divison */= 100* par un décalage $2^6$
 
-### Result with 1, 4 of sobel.c and 1 onf grayscale.c
-sobel x m2 3
-sobel x def 3490592592
-sobel y 3490592592
-sobel threshold 4191854408
-sobel conv grayscale in mode 4 : 4 194 765 795
-sobel x m2 3
-sobel x def 3490377765
-sobel y 3490377765
-sobel threshold 4191430559
-sobel conv grayscale in mode 4 : 4194896656
+### Result with 1, 4 of sobel.c and 1 on grayscale.c
 #### correction diff
 sobel x m2 4294967293
 sobel x def 804586939
@@ -154,8 +145,87 @@ sobel x def 805239257
 sobel y 805239264
 sobel threshold 104377258
 sobel conv grayscale in mode 4 : 100033095
-Sum : 1812063403
-CPU Cycle/pixels = (sobel x +sobel y +sobel threshold +sobel conv)/196612 
-196612 = nbr pixels
+Sum : 1 812 063 403
+
+#### diminuate multi
+sobel x m2 4294967293
+sobel x def 811 570 604
+sobel y 811 570 602
+sobel threshold 106 447 830
+sobel conv grayscale in mode 4 : 102 971 917
+sobel x m2 4294967293
+sobel x def 811709063
+sobel y 811709063
+sobel threshold 106295870
+sobel conv grayscale in mode 4 : 103046564
+ sum 1er : 1 832 560 953
+#### multi plus
+sobel x def 810 707 964
+sobel y 810 707 969
+sobel threshold 99 741 874
+sobel conv grayscale in mode 4 : 102 818 145
+sobel x def 810576356
+sobel y 810576351
+sobel threshold 99871208
+sobel conv grayscale in mode 4 : 102891592
+
+#### change use fucntion
+sobel x def 410721596
+sobel y 410620863
+sobel threshold 99224584
+sobel conv grayscale in mode 4 : 98341149
+sobel x def 410564706
+sobel y 410782341
+sobel threshold 99222795
+sobel conv grayscale in mode 4 : 98414240
+
+#### change gray scale
+sobel x def 410588471
+sobel y 410803970
+sobel threshold 99123281
+sobel conv grayscale in mode 4 : 109543861
+sobel x def 410795096
+sobel y 410683451
+sobel threshold 99033452
+sobel conv grayscale in mode 4 : 109 406 834
+
+#### change val with calcul in grayscale
+sobel x def 411 767 121
+sobel y 411778682
+sobel threshold 99518886
+sobel conv grayscale in mode 4 : 97 536 186
+sobel x def 409 76 390
+sobel y 404 815 773
+sobel threshold 97 812 434
+sobel conv grayscale in mode 4 : 97 819 280
+#### change grayscale calcul
+Nr. of frames each second : 7
+sobel x def 402 536 375
+sobel y 402541240
+sobel threshold 97 198 463
+sobel conv grayscale in mode 4 : 94 821 025
+sobel x def 402540541
+sobel y 402352298
+sobel threshold 97301044
+sobel conv grayscale in mode 4 : 94992573
+#### With only one function
+sobel all 767350909
+sobel threshold 96 142 387
+sobel conv grayscale in mode 4 : 94 237 068
+sobel x m2 767146379
+sobel threshold 96352744
+sobel conv grayscale in mode 4 : 94309310
+#### optim cycles func
+sobel x : 160k
+sobel y : 160k
+sobel threshold : 40k
+sobel grayscale : 40k
+#### result wanted
+CPU Cycle/pixels = (sobel x +sobel y +sobel threshold +sobel conv)/76800
+76800 = nbr pixels
 With this, CPU Cycle/pixels : ~9216
-objectif sum : 438444760
+objectif sum : 438 444 760
+
+# Cache
+chosisir ou placer
+Savoir comment fontionne la cache (hit & miss)
