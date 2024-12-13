@@ -17,6 +17,8 @@ module base_system_nios2_gen2_0 (
 		input  wire        d_waitrequest,                       //                          .waitrequest
 		output wire        d_write,                             //                          .write
 		output wire [31:0] d_writedata,                         //                          .writedata
+		output wire [3:0]  d_burstcount,                        //                          .burstcount
+		input  wire        d_readdatavalid,                     //                          .readdatavalid
 		output wire        debug_mem_slave_debugaccess_to_roms, //                          .debugaccess
 		output wire [24:0] i_address,                           //        instruction_master.address
 		output wire        i_read,                              //                          .read
@@ -48,6 +50,8 @@ module base_system_nios2_gen2_0 (
 		.d_waitrequest                       (d_waitrequest),                       //                          .waitrequest
 		.d_write                             (d_write),                             //                          .write
 		.d_writedata                         (d_writedata),                         //                          .writedata
+		.d_burstcount                        (d_burstcount),                        //                          .burstcount
+		.d_readdatavalid                     (d_readdatavalid),                     //                          .readdatavalid
 		.debug_mem_slave_debugaccess_to_roms (debug_mem_slave_debugaccess_to_roms), //                          .debugaccess
 		.i_address                           (i_address),                           //        instruction_master.address
 		.i_read                              (i_read),                              //                          .read

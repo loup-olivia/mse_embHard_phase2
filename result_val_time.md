@@ -220,6 +220,21 @@ sobel x : 160k
 sobel y : 160k
 sobel threshold : 40k
 sobel grayscale : 40k
+
+#### change sobel filter
+sobel 256265009
+sobel threshold 96154391
+sobel conv grayscale in mode 4 : 94446538
+sobel 256327762
+sobel threshold 96152508
+sobel conv grayscale in mode 4 : 94457107
+#### change sobel and -O3
+sobel 54000974
+sobel threshold 28452857
+sobel conv grayscale in mode 4 : 13754106
+sobel 54239539
+sobel threshold 28452426
+sobel conv grayscale in mode 4 : 13800513
 #### result wanted
 CPU Cycle/pixels = (sobel x +sobel y +sobel threshold +sobel conv)/76800
 76800 = nbr pixels
@@ -229,3 +244,33 @@ objectif sum : 438 444 760
 # Cache
 chosisir ou placer
 Savoir comment fontionne la cache (hit & miss)
+
+### cache 512 Bytes, -O0
+sobel 115628825
+sobel threshold 38748090
+sobel conv grayscale in mode 4 : 24300268
+sobel 115426848
+sobel threshold 38947001
+sobel conv grayscale in mode 4 : 24347036
+### cache 512 Bytes, -O3
+sobel 69511743
+sobel threshold 20446617
+sobel conv grayscale in mode 4 : 6654245
+sobel 69719990
+sobel threshold 20822453
+sobel conv grayscale in mode 4 : 6499104
+### cache 16k Bytes, -O0
+sobel 60141321
+sobel threshold 31155655
+sobel conv grayscale in mode 4 : 20997367
+sobel 60137912
+sobel threshold 31158881
+sobel conv grayscale in mode 4 : 21224441
+
+### cache 16k Bytes, -O3
+sobel 21805332
+sobel threshold 17262802
+sobel conv grayscale in mode 4 : 5488001
+sobel 21808266
+sobel threshold 17264098
+sobel conv grayscale in mode 4 : 5533536

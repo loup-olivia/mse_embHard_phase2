@@ -1,10 +1,105 @@
-17:58:25 **** Incremental Build of configuration Nios II for project sobel ****
+17:15:42 **** Incremental Build of configuration Nios II for project sobel ****
 make all 
 Info: Building C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 [BSP build complete]
+Info: Compiling camera.c to obj/default/camera.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/camera.o camera.c
+Info: Compiling dipswitch.c to obj/default/dipswitch.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/dipswitch.o dipswitch.c
+Info: Compiling grayscale.c to obj/default/grayscale.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/grayscale.o grayscale.c
+Info: Compiling i2c.c to obj/default/i2c.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/i2c.o i2c.c
+i2c.c: In function 'i2c_auto_detect':
+i2c.c:25:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Number of I2C devices detected: %d\n",nrdef);
+     ^
+i2c.c:25:5: warning: incompatible implicit declaration of built-in function 'printf'
+i2c.c:25:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+Info: Compiling lcd_simple.c to obj/default/lcd_simple.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/lcd_simple.o lcd_simple.c
+lcd_simple.c: In function 'LCD_Write_Command':
+lcd_simple.c:18:2: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+  usleep(10);
+  ^
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'main':
+main.c:131:25: warning: implicit declaration of function 'sobel_complete_V2' [-Wimplicit-function-declaration]
+                         sobel_complete_V2(grayscale);
+                         ^
+main.c:158:5: warning: 'end_sobel_conv_graycale' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     printf("sobel conv grayscale in mode %d : %lu\n",mode,end_sobel_conv_graycale-start_sobel_conv_graycale);
+     ^
+main.c:158:5: warning: 'start_sobel_conv_graycale' may be used uninitialized in this function [-Wmaybe-uninitialized]
+main.c:157:5: warning: 'end_sobel_threshold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     printf("sobel threshold %lu\n",end_sobel_threshold-start_sobel_threshold);
+     ^
+main.c:157:5: warning: 'start_sobel_threshold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+main.c:154:5: warning: 'end_sobel' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     printf("sobel %lu\n",end_sobel-start_sobel);
+     ^
+main.c:154:5: warning: 'start_sobel' may be used uninitialized in this function [-Wmaybe-uninitialized]
+main.c:22:17: warning: 'mode' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   unsigned char mode;
+                 ^
+Info: Compiling sobel.c to obj/default/sobel.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/sobel.o sobel.c
+sobel.c: In function 'sobel_complete':
+sobel.c:207:31: warning: passing argument 4 of 'sobel_mac_all' from incompatible pointer type [-Wincompatible-pointer-types]
+      sobel_mac_all(source,x,y,gx_array,gy_array,sobel_width);
+                               ^
+sobel.c:96:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac_all( unsigned char *pixels,
+                     ^
+sobel.c:207:40: warning: passing argument 5 of 'sobel_mac_all' from incompatible pointer type [-Wincompatible-pointer-types]
+      sobel_mac_all(source,x,y,gx_array,gy_array,sobel_width);
+                                        ^
+sobel.c:96:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac_all( unsigned char *pixels,
+                     ^
+sobel.c: In function 'sobel_x':
+sobel.c:218:32: warning: passing argument 4 of 'sobel_mac' from incompatible pointer type [-Wincompatible-pointer-types]
+           sobel_mac(source,x,y,gx_array,sobel_width);
+                                ^
+sobel.c:52:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac( unsigned char *pixels,
+                     ^
+sobel.c: In function 'sobel_x_with_rgb':
+sobel.c:231:38: warning: passing argument 4 of 'sobel_mac' from incompatible pointer type [-Wincompatible-pointer-types]
+        result = sobel_mac(source,x,y,gx_array,sobel_width);
+                                      ^
+sobel.c:52:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac( unsigned char *pixels,
+                     ^
+sobel.c: In function 'sobel_y':
+sobel.c:246:32: warning: passing argument 4 of 'sobel_mac' from incompatible pointer type [-Wincompatible-pointer-types]
+           sobel_mac(source,x,y,gy_array,sobel_width);
+                                ^
+sobel.c:52:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac( unsigned char *pixels,
+                     ^
+sobel.c: In function 'sobel_y_with_rgb':
+sobel.c:259:38: warning: passing argument 4 of 'sobel_mac' from incompatible pointer type [-Wincompatible-pointer-types]
+        result = sobel_mac(source,x,y,gy_array,sobel_width);
+                                      ^
+sobel.c:52:21: note: expected 'const char *' but argument is of type 'const char (*)[3]'
+ static inline short sobel_mac( unsigned char *pixels,
+                     ^
+Info: Compiling sobel_test.c to obj/default/sobel_test.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/sobel_test.o sobel_test.c
+Info: Compiling vga.c to obj/default/vga.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/vga.o vga.c
+Info: Linking sobel.elf
+nios2-elf-g++  -T'C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//linker.x' -msys-crt0='C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/   -Wl,-Map=sobel.map   -O0 -g -Wall -O3  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o sobel.elf obj/default/camera.o obj/default/dipswitch.o obj/default/grayscale.o obj/default/i2c.o obj/default/lcd_simple.o obj/default/main.o obj/default/sobel.o obj/default/sobel_test.o obj/default/vga.o -lm -msys-lib=m
+nios2-elf-insert sobel.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 0 --sidp 0x10010d8 --timestamp 1734105961 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name base_system --quartus_project_dir "c:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/quartus_project" --jdi C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/quartus_project//output_files/mse_demo.jdi --sopcinfo C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/quartus_project/base_system.sopcinfo
+Info: (sobel.elf) 76 KBytes program size (code + initialized data).
+Info:             16300 KBytes free for stack + heap.
+Info: Creating sobel.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source sobel.elf >sobel.objdump
 [sobel build complete]
-17:58:31 **** Incremental Build of configuration Nios II for project sobel ****
+17:15:49 **** Incremental Build of configuration Nios II for project sobel ****
 make all 
 Info: Building C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/

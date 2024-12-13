@@ -1,4 +1,4 @@
-static inline short sobel_mac_all( unsigned char *pixels,
+/*static inline short sobel_mac_all( unsigned char *pixels,
                  int x,
                  int y,
                  const char *filterX,
@@ -31,4 +31,4 @@ static inline short sobel_mac_all( unsigned char *pixels,
       index_array[1] = index_array[2];
       index_array[2] = index_array[2]+width;
    return result;
-}
+}*/

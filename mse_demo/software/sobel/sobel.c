@@ -173,30 +173,30 @@ void sobel_complete_V2( unsigned char * source )
     index_array[1] = sobel_width;
     index_array[2] = sobel_width<<1;
 
-       for (y = 1 ; y < (sobel_height-1) ; y++) { // TODO calcule des indices une fois additionner sur la ligne
-          index_array_x_0[0] = index_array[1]-1;
-          index_array_x_2[0] = index_array[2]-1;
-          index_array_x_0[1] = index_array[1];
-          index_array_x_2[1] = index_array[2];
-          index_array_x_0[2] = index_array[1]+1;
-          index_array_x_2[2] = index_array[2]+1;
-          for (x = 1 ; x < (sobel_width-1) ; x++) {
-                  index_array[4] = index_array[1]+ x;
+   for (y = 1 ; y < (sobel_height-1) ; y++) {
+	  index_array_x_0[0] = index_array[1]-1;
+	  index_array_x_2[0] = index_array[2]-1;
+	  index_array_x_0[1] = index_array[1];
+	  index_array_x_2[1] = index_array[2];
+	  index_array_x_0[2] = index_array[1]+1;
+	  index_array_x_2[2] = index_array[2]+1;
+	  for (x = 1 ; x < (sobel_width-1) ; x++) {
+		index_array[4] = index_array[1]+ x;
 
-                  sobel_x_result[index_array[4]] = (source[index_array_x_0[1]])-(source[index_array_x_0[0]])-(source[index_array_x_0[2]] << 1)+(source[index_array_x_2[0]]<<2)-(source[index_array_x_2[1]]) + (source[index_array_x_2[2]]);
-                  sobel_y_result[index_array[4]] = (source[index_array_x_0[0]])+(source[index_array_x_0[1]]<<1)+(source[index_array_x_0[2]])-(source[index_array_x_2[0]])-(source[index_array_x_2[1]]<<2) - (source[index_array_x_2[2]]);
+		sobel_x_result[index_array[4]] = (source[index_array_x_0[1]])-(source[index_array_x_0[0]])-(source[index_array_x_0[2]] << 1)+(source[index_array_x_2[0]]<<2)-(source[index_array_x_2[1]]) + (source[index_array_x_2[2]]);
+		sobel_y_result[index_array[4]] = (source[index_array_x_0[0]])+(source[index_array_x_0[1]]<<1)+(source[index_array_x_0[2]])-(source[index_array_x_2[0]])-(source[index_array_x_2[1]]<<2) - (source[index_array_x_2[2]]);
 
-                index_array_x_0[0] = index_array_x_0[1];
-                index_array_x_2[0] = index_array_x_2[1];
-                index_array_x_0[1] = index_array_x_0[2];
-                index_array_x_2[1] = index_array_x_2[2];
-                index_array_x_0[2] = index_array_x_0[1]+1;
-                index_array_x_2[2] = index_array_x_2[1]+1;
-          }
-          index_array[0] = index_array[1];
-          index_array[1] = index_array[2];
-          index_array[2] = index_array[1]+sobel_width;
-       }
+		index_array_x_0[0] = index_array_x_0[1];
+		index_array_x_2[0] = index_array_x_2[1];
+		index_array_x_0[1] = index_array_x_0[2];
+		index_array_x_2[1] = index_array_x_2[2];
+		index_array_x_0[2] = index_array_x_0[1]+1;
+		index_array_x_2[2] = index_array_x_2[1]+1;
+	  }
+	  index_array[0] = index_array[1];
+	  index_array[1] = index_array[2];
+	  index_array[2] = index_array[1]+sobel_width;
+   }
 
 }
 void sobel_complete( unsigned char *source ){
