@@ -226,6 +226,13 @@ CPU Cycle/pixels = (sobel x +sobel y +sobel threshold +sobel conv)/76800
 With this, CPU Cycle/pixels : ~9216
 objectif sum : 438 444 760
 
-# Cache
+## Cache
 chosisir ou placer
 Savoir comment fontionne la cache (hit & miss)
+
+# Hardware
+Pour améliorer, je peux passer par une modification du vhdl par des custom function notamment de :
+- grayscale
+- sobel
+
+## Grayscale
