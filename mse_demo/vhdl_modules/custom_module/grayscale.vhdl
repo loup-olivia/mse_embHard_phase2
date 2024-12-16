@@ -25,8 +25,8 @@ use ieee.numeric_std.all;
 entity rgb2gray is
     generic(
         ADDR_WIDTH : integer := 16; --Address bus size of the Image Ram.
-        IM_SIZE_D1 : integer := 64; --Size along Dimension 1
-        IM_SIZE_D2 : integer := 64  --Size along Dimension 2
+        IM_SIZE_D1 : integer := 40; --Size along Dimension 1
+        IM_SIZE_D2 : integer := 30  --Size along Dimension 2
     );
     port (
         Clk : in std_logic;
@@ -41,17 +41,17 @@ architecture Behav of rgb2gray is
     component im_ram is
         generic(
             ADDR_WIDTH : integer := 16; --Address bus size of the Image Ram.
-            IM_SIZE_D1 : integer := 64; --Size along Dimension 1
-            IM_SIZE_D2 : integer := 64  --Size along Dimension 2
+            IM_SIZE_D1 : integer := 40; --Size along Dimension 1
+            IM_SIZE_D2 : integer := 30  --Size along Dimension 2
         );
         port (
             Clk : in std_logic;
             addr_in : in unsigned(ADDR_WIDTH-1 downto 0);   --Address bus to the Image Ram.
-            rgb_out : out std_logic_vector(23 downto 0) --24 bit RGB pixel output
+            rgb_out : out std_logic_vector(15 downto 0) --16 bits RGB pixel output
         );
     end component;
 
-    signal rgb_out : std_logic_vector(23 downto 0);
+    signal rgb_out : std_logic_vector(15 downto 0);
     signal addr_in : unsigned(ADDR_WIDTH-1 downto 0);
 
 begin
@@ -63,7 +63,7 @@ begin
     --Process to convert RGB to Gray image.
     CONVERTER_PROC : process(Clk,reset)
         --temperary variables
-        variable temp1,temp2,temp3,temp4 : unsigned(15 downto 0);
+        variable temp1,temp2,temp3,temp4,red,green,blue : unsigned(15 downto 0);
     begin
         if(reset = '1') then    --active high asynchronous reset
             addr_in <= (others => '0');
@@ -80,10 +80,13 @@ begin
             --Gray pixel = 0.3*Red pixel + 0.59*Green pixel + 0.11*Blue pixel
             --the 24 bit value is split into R,G and B components and multiplied
             --with their respective weights and then added together.
-            temp1 <= ((rgb_out(11 downto 0) and "0x1F")&"000") *"21";      --(0.3 * R)  
-            temp2 <= ((rgb_out(4 downto 9) and "0x3F")&"00") *"7";      --(0.59 * G) 
-            temp3 <= ((rgb_out(7 downto 8) and "0x1F")&"000") *"72";  --(0.11 * B)
-            temp4 <= temp1 + temp2 + temp3;
+            red := unsigned(rgb_out(15 downto 0)) srl 11;      --(0.3 * R) 
+            temp1 := (red(4 downto 0) sll 3)*21; 
+            green := unsigned(rgb_out(15 downto 0)) srl 5;      --(0.59 * G) 
+            temp2 := (green(10 downto 5) sll 2)*72;
+            blue := unsigned(rgb_out(15 downto 0)) srl 0;  --(0.11 * B)
+            temp3 := (blue(15 downto 11) sll 3)*7;
+            temp4 := temp1 + temp2 + temp3;
             --Most significant bit of the LSB portion is added to the MSB portion. 
             --To round off the result.
             gray_out <= temp4(15 downto 8) + ("0000000" & temp4(7));
