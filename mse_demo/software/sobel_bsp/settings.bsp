@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>9 déc. 2024 17:58:09</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1733763489869</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>17 déc. 2024 23:17:48</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1734473868588</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\olivi\master\embHard\mse_embHard_phase2\mse_demo\software\sobel_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\olivi\master\embHard\mse_embHard_phase2\mse_demo\quartus_project\base_system.sopcinfo</SopcDesignFile>
@@ -905,28 +905,28 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>ProfileTimer</slaveDescriptor>
-                <addressRange>0x01001000 - 0x0100101F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes>timer</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>Systimer</slaveDescriptor>
-                <addressRange>0x01001020 - 0x0100103F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes>timer</attributes>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>cam_ctrl</slaveDescriptor>
-                <addressRange>0x01001040 - 0x0100105F</addressRange>
+                <addressRange>0x01001000 - 0x0100101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>lcd_ctrl</slaveDescriptor>
-                <addressRange>0x01001060 - 0x0100107F</addressRange>
+                <addressRange>0x01001020 - 0x0100103F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>ProfileTimer</slaveDescriptor>
+                <addressRange>0x01001040 - 0x0100105F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>Systimer</slaveDescriptor>
+                <addressRange>0x01001060 - 0x0100107F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>i2c_ctrl</slaveDescriptor>
