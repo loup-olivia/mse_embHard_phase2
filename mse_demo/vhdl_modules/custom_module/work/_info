@@ -1,0 +1,147 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+Emanagegray
+Z0 w1734469182
+Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z6 dC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module
+Z7 8C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl
+Z8 FC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl
+l0
+L27
+V?UnIPBGNQXP37n1S6`]d41
+!s100 79K7YP0CI2X0^iF@1BhzT1
+Z9 OV;C;10.5b;63
+32
+Z10 !s110 1734469403
+!i10b 1
+Z11 !s108 1734469403.000000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl|
+Z13 !s107 C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl|
+!i113 1
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1 CvgOpt 0
+Acustominstruction_gray
+Z16 DEx4 work 8 rgb2gray 0 22 Q<zYeaWN^KAR<PCL>]?FJ2
+R1
+R2
+R3
+R4
+R5
+Z17 DEx4 work 10 managegray 0 22 ?UnIPBGNQXP37n1S6`]d41
+l54
+L39
+VQCzNN7mQoW3N:aQZ2L<dL0
+!s100 A35]7PQW4E0iCfNF9FiWC1
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15
+Ergb2gray
+Z18 w1734469148
+R1
+R2
+R3
+R4
+R5
+R6
+Z19 8C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl
+Z20 FC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl
+l0
+L8
+VQ<zYeaWN^KAR<PCL>]?FJ2
+!s100 d1oS;o_H6GP`0b0o>GK7U1
+R9
+32
+Z21 !s110 1734469404
+!i10b 1
+Z22 !s108 1734469404.000000
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl|
+Z24 !s107 C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl|
+!i113 1
+R14
+R15
+Abehav
+R1
+R2
+R3
+R4
+R5
+R16
+l34
+L18
+Z25 V:j3>>YC`@]7DH<BO_]o_f1
+Z26 !s100 bb8H[O9No3I5B^Ze;lIBo3
+R9
+32
+R21
+!i10b 1
+R22
+R23
+R24
+!i113 1
+R14
+R15
+Etb_custom_gray
+Z27 w1734469400
+R3
+Z28 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
+R4
+R5
+R6
+Z29 8C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd
+Z30 FC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd
+l0
+L10
+VMEg>5RX>WZ5L3Q_l>LPm_0
+!s100 SZKCcEAaaHno>nkbn]SMk0
+R9
+32
+R21
+!i10b 1
+R22
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd|
+Z32 !s107 C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd|
+!i113 1
+R14
+R15
+Abehavioral
+R1
+R2
+R17
+R3
+R28
+R4
+R5
+DEx4 work 14 tb_custom_gray 0 22 MEg>5RX>WZ5L3Q_l>LPm_0
+l39
+L14
+V7`7QV]>zo`ah5eHfQVZ0T2
+!s100 =DNO;GgefF>G3U1@`^dk>0
+R9
+32
+R21
+!i10b 1
+R22
+R31
+R32
+!i113 1
+R14
+R15

@@ -1,12 +1,17 @@
-21:30:56 **** Incremental Build of configuration Nios II for project sobel ****
+08:18:56 **** Incremental Build of configuration Nios II for project sobel ****
 make all 
 Info: Building C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
 [BSP build complete]
-[sobel build complete]
-21:31:04 **** Incremental Build of configuration Nios II for project sobel ****
-make all 
-Info: Building C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
-C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/
-[BSP build complete]
-[sobel build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//HAL/inc -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/ -IC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall -O0  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'main':
+main.c:132:25: warning: implicit declaration of function 'sobel_complete_V2' [-Wimplicit-function-declaration]
+                         sobel_complete_V2(grayscale);
+                         ^
+Info: Linking sobel.elf
+nios2-elf-g++  -T'C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//linker.x' -msys-crt0='C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/software/sobel_bsp/   -Wl,-Map=sobel.map   -O0 -g -Wall -O0  -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o sobel.elf obj/default/camera.o obj/default/dipswitch.o obj/default/grayscale.o obj/default/i2c.o obj/default/lcd_simple.o obj/default/main.o obj/default/sobel.o obj/default/vga.o -lm -msys-lib=m
+obj/default/main.o: In function `main':
+C:\Users\olivi\master\embHard\mse_embHard_phase2\mse_demo\software\sobel/main.c:132: undefined reference to `sobel_complete_V2'
+collect2.exe: error: ld returned 1 exit status
+make: *** [sobel.elf] Error 1

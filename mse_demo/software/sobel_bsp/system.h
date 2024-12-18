@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'base_system'
  * SOPC Builder design path: C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/quartus_project/base_system.sopcinfo
  *
- * Generated: Sun Nov 10 15:01:17 CET 2024
+ * Generated: Tue Dec 17 23:17:48 CET 2024
  */
 
 /*
@@ -133,6 +133,15 @@
 
 
 /*
+ * Custom instruction macros
+ *
+ */
+
+#define ALT_CI_CUSTINCSTRUCT_GRAYSCALE_0(A,B) __builtin_custom_inii(ALT_CI_CUSTINCSTRUCT_GRAYSCALE_0_N,(A),(B))
+#define ALT_CI_CUSTINCSTRUCT_GRAYSCALE_0_N 0x0
+
+
+/*
  * Define for each module class mastered by the CPU
  *
  */
@@ -145,6 +154,7 @@
 #define __ALTERA_NIOS2_GEN2
 #define __ALTPLL
 #define __CAM_DMA
+#define __CUSTINCSTRUCT_GRAYSCALE
 #define __I2C_MASTER
 #define __LCD_DMA
 #define __VGA_DMA
@@ -157,7 +167,7 @@
 
 #define ALT_MODULE_CLASS_ProfileTimer altera_avalon_timer
 #define PROFILETIMER_ALWAYS_RUN 0
-#define PROFILETIMER_BASE 0x1001000
+#define PROFILETIMER_BASE 0x1001040
 #define PROFILETIMER_COUNTER_SIZE 32
 #define PROFILETIMER_FIXED_PERIOD 0
 #define PROFILETIMER_FREQ 50000000
@@ -219,7 +229,7 @@
 
 #define ALT_MODULE_CLASS_Systimer altera_avalon_timer
 #define SYSTIMER_ALWAYS_RUN 0
-#define SYSTIMER_BASE 0x1001020
+#define SYSTIMER_BASE 0x1001060
 #define SYSTIMER_COUNTER_SIZE 32
 #define SYSTIMER_FIXED_PERIOD 0
 #define SYSTIMER_FREQ 50000000
@@ -258,8 +268,8 @@
  */
 
 #define ALT_MODULE_CLASS_cam_ctrl cam_dma
-#define CAM_CTRL_BASE 0x1001040
-#define CAM_CTRL_IRQ 3
+#define CAM_CTRL_BASE 0x1001000
+#define CAM_CTRL_IRQ 0
 #define CAM_CTRL_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define CAM_CTRL_NAME "/dev/cam_ctrl"
 #define CAM_CTRL_SPAN 32
@@ -284,7 +294,7 @@
 
 #define ALT_MODULE_CLASS_i2c_ctrl i2c_master
 #define I2C_CTRL_BASE 0x1001090
-#define I2C_CTRL_IRQ 2
+#define I2C_CTRL_IRQ 3
 #define I2C_CTRL_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define I2C_CTRL_NAME "/dev/i2c_ctrl"
 #define I2C_CTRL_SPAN 16
@@ -298,7 +308,7 @@
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
 #define JTAG_UART_BASE 0x10010e0
-#define JTAG_UART_IRQ 0
+#define JTAG_UART_IRQ 1
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
 #define JTAG_UART_READ_DEPTH 64
@@ -315,8 +325,8 @@
  */
 
 #define ALT_MODULE_CLASS_lcd_ctrl lcd_dma
-#define LCD_CTRL_BASE 0x1001060
-#define LCD_CTRL_IRQ 1
+#define LCD_CTRL_BASE 0x1001020
+#define LCD_CTRL_IRQ 2
 #define LCD_CTRL_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define LCD_CTRL_NAME "/dev/lcd_ctrl"
 #define LCD_CTRL_SPAN 32
@@ -401,7 +411,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1731245602
+#define SYSID_TIMESTAMP 1734472177
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

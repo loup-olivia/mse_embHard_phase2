@@ -220,26 +220,26 @@ module base_system_mm_interconnect_0_router
 
     // ( 0x1001000 .. 0x1001020 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 25'h1001000   ) begin
-            src_channel = 12'b000010000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
-    end
-
-    // ( 0x1001020 .. 0x1001040 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 25'h1001020   ) begin
-            src_channel = 12'b000001000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-    end
-
-    // ( 0x1001040 .. 0x1001060 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 25'h1001040   ) begin
             src_channel = 12'b010000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
-    // ( 0x1001060 .. 0x1001080 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 25'h1001060   ) begin
+    // ( 0x1001020 .. 0x1001040 )
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 25'h1001020   ) begin
             src_channel = 12'b000100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
+    end
+
+    // ( 0x1001040 .. 0x1001060 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 25'h1001040   ) begin
+            src_channel = 12'b000010000000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+    end
+
+    // ( 0x1001060 .. 0x1001080 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 25'h1001060   ) begin
+            src_channel = 12'b000001000000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x1001090 .. 0x10010a0 )
