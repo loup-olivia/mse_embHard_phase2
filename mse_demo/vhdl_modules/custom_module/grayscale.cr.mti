@@ -1,0 +1,38 @@
+C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd {2 {vcom -work work -2002 -explicit -stats=none C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package ENV
+** Warning: C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/custom_gray_tb.vhd(4): (vcom-1516) Package "STD.ENV" does not exist in this language version.
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_custom_gray
+-- Compiling architecture Behavioral of tb_custom_gray
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading entity manageGray
+
+} {} {}} C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale.vhdl
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity rgb2gray
+-- Compiling architecture Behav of rgb2gray
+
+} {} {}} C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/olivi/master/embHard/mse_embHard_phase2/mse_demo/vhdl_modules/custom_module/grayscale_manage.vhdl
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity manageGray
+-- Compiling architecture custominstruction_gray of manageGray
+-- Loading entity rgb2gray
+
+} {} {}}

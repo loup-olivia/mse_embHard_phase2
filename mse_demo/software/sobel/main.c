@@ -67,9 +67,10 @@ int main()
 		      	  	   break;
 		      case 1 : 
 			  			start_sobel_conv_graycale =  alt_timestamp();
-						conv_grayscale((void *)image,
+			  			ALT_CI_CUSTINCSTRUCT_GRAYSCALE_0(image[32],image[64]);
+						/*conv_grayscale((void *)image,
 		    		                  cam_get_xsize()>>1,
-		    		                  cam_get_ysize());
+		    		                  cam_get_ysize());*/
 						end_sobel_conv_graycale = alt_timestamp();
 		               grayscale = get_grayscale_picture();
 		               transfer_LCD_with_dma(&grayscale[16520],
